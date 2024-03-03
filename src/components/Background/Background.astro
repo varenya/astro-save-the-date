@@ -1,0 +1,26 @@
+---
+import {Image} from "astro:assets";
+const { backgroundImage, alt, style, withShade } = Astro.props;
+const backgroundStyle = style === "contain" ? "object-contain" : "object-cover";
+---
+
+<style>
+  .withShade::before {
+    position: absolute;
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+</style>
+
+<div class:list={["bg relative", { withShade: withShade }]}>
+  <div class="absolute inset-0 -z-10 touch-none">
+    <Image src={backgroundImage} alt={alt || ""} class={backgroundStyle} />
+  </div>
+  <div class="relative">
+    <slot />
+  </div>
+</div>

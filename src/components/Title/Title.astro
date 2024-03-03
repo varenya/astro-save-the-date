@@ -1,0 +1,17 @@
+---
+import {Image} from "astro:assets";
+import TitleDivider from "../../assets/images/title-divider.png";
+const { title, text } = Astro.props;
+---
+
+<div class="pt-20 px-10 pb-10">
+  <h2
+    class="text-gray-700 text-center text-4xl lg:text-5xl font-script mb-3 lg:mb-6"
+  >
+    {title}
+  </h2>
+  <div class="max-w-lg m-auto">
+    <p class="text-gray-700 text-center font-lora mb-3">{text}</p>
+  </div>
+  <Image src={TitleDivider} alt={"title image"} class="w-auto m-auto" />
+</div>

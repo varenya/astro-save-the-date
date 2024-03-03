@@ -1,0 +1,72 @@
+---
+import {Image} from "astro:assets";
+const { topText, names, buttonText, date, image } = Astro.props;
+---
+
+<style>
+  .hero::before {
+    position: absolute;
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .textLine::before,
+  .textLine::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #dd526a;
+  }
+
+  .textLine {
+    position: relative;
+  }
+  .textLine::after {
+    right: -110%;
+  }
+  .textLine::before {
+    left: -110%;
+  }
+</style>
+
+<div
+  class:list={[
+    `bg-slate-900 flex justify-center items-center py-24 sm:py-48 lg:py-64 xl:py-72 relative`,
+    "hero",
+  ]}
+>
+  <div class={`absolute inset-0`}>
+    <Image
+      src={image}
+      alt="background image"
+      class="object-cover"
+    />
+  </div>
+  <h1 class="font-lora text-center relative z-10">
+    <span
+      class="block text-xs sm:text-sm lg:text-sm uppercase mb-1 sm:mb-3 lg:mb-5 text-gray-200 tracking-widest"
+    >
+      {topText}
+    </span>
+    <span class="block text-5xl sm:text-6xl lg:text-8xl mb-2 sm:mb-4 lg:mb-6">
+      {names}
+    </span>
+    <span
+      class="block text-xs sm:text-sm lg:text-base uppercase mb-2 sm:mb-4 lg:mb-6 text-gray-200"
+    >
+      <span class={`textLine inline-block  tracking-widest`}>
+        {buttonText}
+      </span>
+    </span>
+    <span class="block text-lg sm:text-2xl lg:text-4xl">{date}</span>
+  </h1>
+</div>
